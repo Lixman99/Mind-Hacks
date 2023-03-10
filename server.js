@@ -18,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //     res.render("homepage")
 // })
 
+
 // app.get("/gallery", (req, res) => {
 
 // })
@@ -31,8 +32,10 @@ const Car = require('./models/Car');
 const Customer = require('./models/Customer');
 const Reservation = require('./models/Reservation');
 
+
 app.use(require("./controllers"));
-;
+
+
 const PORT = process.env.PORT || 3001;
 // Connect to the database before starting the Express.js server
 sequelize.sync().then(() => {

@@ -11,3 +11,4 @@ Reservation.belongsTo(Car, {
 });
 
 module.exports = { User, Car, Reservation };
+
