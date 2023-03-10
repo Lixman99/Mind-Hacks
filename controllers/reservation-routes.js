@@ -3,7 +3,7 @@ const Reservation = require('../models/reservation');
 const reservation = new Reservation();
 
 
-// GET all cars
+// GET all reservatins
 router.get('/reservation', async (req, res) => {
     try {
       const reservation = await Reservation.findAll();
