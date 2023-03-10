@@ -2,9 +2,9 @@ const express = require('express');
 const sequelize = require('./config/connection');
 
 const path = require("path")
-const express = require("express")
 const exphbs = require("express-handlebars")
 const hbs = exphbs.create()
+const app = express()
 
 app.engine("handlebars", hbs.engine)
 app.set("view engine", "handlebars")
@@ -17,7 +17,7 @@ app.get("/home", (req, res) => {
     res.render("homepage")
 })
 
-app.get("/galery", (req, res) => {
+app.get("/gallery", (req, res) => {
 
 })
 
@@ -31,7 +31,7 @@ const Customer = require('./models/Customer');
 const Reservation = require('./models/Reservation');
 
 
-const app = express();
+;
 const PORT = process.env.PORT || 3001;
 // Connect to the database before starting the Express.js server
 sequelize.sync().then(() => {
