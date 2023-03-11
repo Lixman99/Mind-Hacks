@@ -10,7 +10,7 @@ router.get(`/`, withAuth, async (req,res)=> {
         // serialzng data 
         const customer = customerData.map((project) => project.get({plain: true}));
 
-res.render(`rentpage`, {
+res.render(`rent`, {
     customer,
     logged_in: req.session.logged_in
 });
