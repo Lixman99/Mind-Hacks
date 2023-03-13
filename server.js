@@ -4,23 +4,11 @@ const path = require("path")
 const exphbs = require("express-handlebars")
 
 
-const Car = require('./models/Car');
-const Customer = require('./models/Customer');
-const Reservation = require('./models/Reservation');
 
-const app = express();
-const PORT = process.env.PORT || 3001;
-// Connect to the database before starting the Express.js server
-sequelize.sync().then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
-
-
-//----HandleBar Set Up--
-
-
-const hbs = exphbs.create() //if we have helpers, add them within create()
-
+const path = require("path")
+const exphbs = require("express-handlebars")
+const hbs = exphbs.create()
+const app = express()
 
 app.engine("handlebars", hbs.engine)
 app.set("view engine", "handlebars")
@@ -29,25 +17,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app.get("/home", (req, res) => {
+//     res.render("homepage")
+// })
 
-//routes must be in controllers folder --
 
-app.get("/", (req, res) => {
-  res.render("main")
-})
+// app.get("/gallery", (req, res) => {
 
-app.get("/gallery", (req, res) => {
-  res.render("gallery")
-})
+// })
 
-app.get("/home", (req, res) => {
-  res.render("home")
-})
+// app.get("/rent", (req, res) => {
+//     res.render("contact")
+// })
 
-app.get("/rent", (req, res) => {
-  res.render("rent")
-})
 
-app.listen(3001, () => {
-  console.log("app listening")
-})
+const Car = require('./models/Car');
+const Customer = require('./models/Customer');
+const Reservation = require('./models/Reservation');
+
+
+app.use(require("./controllers"));
+
+
+const PORT = process.env.PORT || 3001;
+// Connect to the database before starting the Express.js server
+sequelize.sync().then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+});
