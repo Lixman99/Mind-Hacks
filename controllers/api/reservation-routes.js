@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Reservation = require('../models/reservation');
+const Reservation = require('../../models/reservation');
 const reservation = new Reservation();
 
 
