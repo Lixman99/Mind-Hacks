@@ -1,5 +1,7 @@
+const nodemailer = require("nodemailer");
 const express = require('express');
 const sequelize = require('./config/connection');
+
 
 
 const path = require("path")
