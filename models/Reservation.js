@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const nodemailer = require("nodemailer");
+const { EMAIL, PASSWORD } = require('../env');
 
 class Reservation extends Model {
   async sendConfirmationEmail(customerEmail) {
@@ -10,8 +11,8 @@ class Reservation extends Model {
       port: 465, // Port for SMTP (usually 465)
       secure: true, // Usually true if connecting to port 465
       auth: {
-        user: "vintagecruisers99@gmail.com", // Your email address
-        pass: "rrasrwzrhrztlvkx", // Password (for gmail, your app password)
+        user: EMAIL, // Your email address
+        pass: PASSWORD, // Password (for gmail, your app password)
         // ⚠️ For better security, use environment variables set on the server for these values when deploying
       },
     });
