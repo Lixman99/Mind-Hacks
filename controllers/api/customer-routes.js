@@ -6,8 +6,8 @@ const customer = new Customer();
 // GET all customers
 router.get('/customer', async (req, res) => {
     try {
-      const customer = await Customer.findAll();
-      res.status(200).json(customer);
+      const customers = await Customer.findAll();
+      res.status(200).json(customers);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
