@@ -1,37 +1,28 @@
-<head>
-    <link rel="stylesheet" href="../css/home.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Raleway&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
-</head>
-
-<body>
-    <div id="carousel-wrapper">
-        <button id="prevBtn">&#8249;</button>
-        <div class="carousel">
-
-            <div class="carousel-slide">
-                {{#each cars}}
-                <img src="/images/{{image}}.jpg">
-                {{/each}}
-            </div>
-
-
+<div id="carouselExample" class="carousel slide w-100">
+    <div class="carousel-inner">
+        {{#each cars as | car index | }}
+        <div class="carousel-item{{#unless index}} active {{/unless}}">
+            <img src="/images/{{image}}.jpg" class="d-block w-100">
         </div>
-
-        <button id="nextBtn">&#8250;</button>
+        {{/each}}
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
-    <div class="welcome-message-wrapper">
-        <div id="welcome-message">
-            <h2>Select your classic vintage vehicle</h2>
 
-            <button class="rent-button">Rent Now</button>
-        </div>
+<div class="welcome-message-wrapper">
+    <div id="welcome-message">
+        <h2>Select your classic vintage vehicle</h2>
+
+        <button class="rent-button">Rent Now</button>
     </div>
-    </div>
-    <script src="js/home.js"></script>
-    <script src="js/test.js"></script>
-</body>
+</div>
+</div>
+<script src="js/home.js"></script>
