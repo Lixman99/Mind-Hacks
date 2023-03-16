@@ -52,14 +52,14 @@ Reservation.init(
       type: DataTypes.INTEGER,
       references: {
         model: 'cars',
-        key: 'carId',
+        key: 'car_id',
       },
     },
     customerId: {
       type: DataTypes.INTEGER,
       references: {
         model: 'customers',
-        key: 'customerId',
+        key: 'customer_Id',
       },
     },
     pickup: {
