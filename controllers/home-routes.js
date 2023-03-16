@@ -7,19 +7,11 @@ const exphbs = require("express-handlebars")
 const express = require('express');
 
 
-router.get("/home", (req, res) => {
-  res.render("home")
-})
- router.get("/gallery", (req, res) => {
-     res.render("gallery")
- })
-// GET all cars
+// GET all cars data and render the home page
 router.get('/', async (req, res) => {
   try {
     const carsData = await Car.findAll();
     const cars = carsData.map((car) => car.get({ plain: true }));
-    console.log(cars[0].image)
-
 
    res.render('home', {
      cars,
@@ -29,6 +21,21 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+//get all cars data and render the gallery page
+router.get('/gallery', async (req, res) => {
+  try {
+    const carsData = await Car.findAll();
+    const cars = carsData.map((car) => car.get({ plain: true }));
+
+   res.render('gallery', {
+     cars,
+   });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // GET one car by id
 router.get('/cars/:id', async (req, res) => {
   try {
