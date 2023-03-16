@@ -59,3 +59,22 @@ a:hover {
     background-color: black;
     border: 1px solid white;
 }
+
+h3 {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 10px;
+}
+
+#carImage {
+    height: 60%;
+    width: 60%;
+    text-align: center;
+}
+
+#imageWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
