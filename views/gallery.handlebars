@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="../css/gallery.css">
+    <link rel="stylesheet" href="/css/gallery.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,16 +14,17 @@
             <div class="float-container">
                 {{#each cars}}
                 <div class="fleet-container">
-                    <img src="/images/{{image}}.jpg>
+                    <img src="/images/{{image}}.jpg">
                     <h2>{{title}}</h2>
                     <h3>{{description}}</h3>
+                    <h3>{{price}}</h3>
                     <button>Book Now</button>
                 </div>
                 {{/each}}
 
-                
-        </div>
+
+            </div>
         </div>
     </main>
-    <script src=" js/test.js"></script>
+
 </body>
