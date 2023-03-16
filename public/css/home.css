@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+html {
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+/*carousel css*/
+
+#carousel-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.carousel {
+    position: relative;
+    margin: 0px;
+    width: 650px;
+    height: 550px;
+    overflow: hidden;
+    padding: 0 30px;
+}
+
+.carousel-slide {
+    display: flex;
+    width: calc(650px * 5);
+    height: 550px;
+}
+
+.carousel-slide img {
+    width: 650px;
+    height: 550px;
+}
+
+#prevBtn,
+#nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    height: 100%;
+    background-color: rgb(41, 40, 40);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+
+#nextBtn:hover {
+    background-color: rgb(167, 166, 166);
+}
+
+#prevBtn:hover {
+    background-color: rgb(167, 166, 166);
+}
+
+#prevBtn {
+    left: 0px;
+}
+
+#nextBtn {
+    right: 0px;
+}
+
+/*welcome message css*/
+
+body {
+    background-color: rgb(236, 235, 235);
+}
+
+#welcome-message {
+    background-color: rgb(41, 40, 40, .8);
+    color: #fff;
+    padding: 20px;
+    margin: 0px;
+    position: relative;
+    height: 50px;
+    display: flex;
+}
+
+.welcome-message-wrapper {
+    z-index: 2;
+    position: absolute;
+    top: 74%;
+    width: 650px;
+    padding-left: 30px;
+
+
+}
+
+h2 {
+    margin-left: 55px;
+    margin-right: 20px;
+    font-size: 20px;
+    margin-top: 15px;
+
+}
+
+.rent-button {
+    margin-top: 7px;
+    padding: 5px 10px 5px 10px;
+    background-color: rgb(236, 235, 235);
+    font-size: 20px;
+}
+
+.rent-button:hover {
+    cursor: pointer;
+    background-color: rgb(41, 40, 40);
+    color: rgb(236, 235, 235);
+    border: 2px solid rgb(236, 235, 235);
+}
