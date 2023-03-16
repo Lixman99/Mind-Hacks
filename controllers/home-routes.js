@@ -38,19 +38,27 @@ router.get('/gallery', async (req, res) => {
   }
 });
 
+
 // GET one car by id
-router.get('/cars/:id', async (req, res) => {
+router.get('/rent/:car_id', async (req, res) => {
   try {
-    const car = await Car.findByPk(req.params.id);
-    if (!car) {
+    const carsData = await Car.findByPk(req.params.car_id);
+    const cars = carsData.get({ plain: true });
+    console.log(cars);
+    if (!cars) {
       res.status(404).json({ message: 'Car not found' });
-    } else {
-      res.status(200).json(car);
     }
+    res.render('rent', {
+      cars,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.get("/signup", async (req, res) => {
+  res.render('signup')
 });
 
 // POST a new car
