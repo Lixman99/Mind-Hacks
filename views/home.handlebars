@@ -1,7 +1,37 @@
+<head>
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
 <body>
-    <div id="carousel">
-        {{#each cars}}
-        <div class="carousel-content"><img src="/images/{{image}}.jpg" alt="{{image}}.jpg" </div>
-{{/each}}
-       
+    <div id="carousel-wrapper">
+        <button id="prevBtn">&#8249;</button>
+        <div class="carousel">
+
+            <div class="carousel-slide">
+                {{#each cars}}
+                <img src="/images/{{image}}.jpg">
+                {{/each}}
+            </div>
+
+
+        </div>
+
+        <button id="nextBtn">&#8250;</button>
+    </div>
+
+    <div class="welcome-message-wrapper">
+        <div id="welcome-message">
+            <h2>Select your classic vintage vehicle</h2>
+
+            <button class="rent-button">Rent Now</button>
+        </div>
+    </div>
+    </div>
+    <script src="js/home.js"></script>
+    <script src="js/test.js"></script>
 </body>

@@ -13,7 +13,7 @@ nextBtn.addEventListener('click', () => {
     if (counter >= carouselImages.length - 1) return;
     carouselSlide.style.transition = 'transform 0.4s ease-in-out';
     counter++;
-    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)'; //fix value of translation
 });
 
 prevBtn.addEventListener('click', () => {
