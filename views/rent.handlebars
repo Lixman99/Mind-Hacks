@@ -1,9 +1,9 @@
  <!-- Mobiscroll JS and CSS Includes -->
+  <link rel="stylesheet" href="../css/rent.css">
     <link rel="stylesheet" href="../css/mobiscroll.javascript.min.css">
     <script src="../js/mobiscroll.javascript.min.js"></script>
-    
-
-    <style type="text/css">
+  
+<style type="text/css">
             body {
         margin: 0;
         padding: 0;
@@ -45,11 +45,12 @@
 </head>
 
 <body>
-    <img src="/images/{{cars.image}}.jpg">
+    <div id="imageWrapper"><img id="carImage" src="/images/{{cars.image}}.jpg"></div>
+    
     <h2>{{cars.title}}</h2>
     <h3>{{cars.description}}</h3>
     <h3>Price per Day ${{cars.price}}</h3>         
-
+ 
     <div mbsc-page class="demo-date-range">
         <div style="height:100%">
                 <div id="demo-calendar"></div>
