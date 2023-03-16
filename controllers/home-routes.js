@@ -1,6 +1,6 @@
 const router = require(`express`).Router();
-const Customer = require(`../models/Customer`);
-const Car = require('../models/Car');
+const { Customer, Car } = require(`../models`);
+
 const withAuth = require(`../utilis/auth`);
 const exphbs = require("express-handlebars")
 //const hbs = exphbs.create()
@@ -115,9 +115,13 @@ router.get(`/`, async (req, res) => {
     // serialzng data 
     const customer = customerData.map((project) => project.get({ plain: true }));
 
+    const carsData = await Car.findAll({});
+    const cars = carsData.map((car) => car.get({ plain: true }));
+
     res.render(`home`, {
       customer,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      cars
     });
   } catch (err) {
     res.status(404).json(err);
