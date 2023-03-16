@@ -2,19 +2,33 @@ const router = require(`express`).Router();
 const Customer = require(`../models/Customer`);
 const Car = require('../models/Car');
 const withAuth = require(`../utilis/auth`);
+const exphbs = require("express-handlebars")
+//const hbs = exphbs.create()
+const express = require('express');
 
 
+router.get("/home", (req, res) => {
+  res.render("home")
+})
+router.get("/gallery", (req, res) => {
+  res.render("gallery")
+})
 // GET all cars
-router.get('/cars', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const cars = await Car.findAll();
-    res.status(200).json(cars);
+    const carsData = await Car.findAll();
+    const cars = carsData.map((car) => car.get({ plain: true }));
+    console.log(cars)
+
+
+    res.render('home', {
+      cars,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
 // GET one car by id
 router.get('/cars/:id', async (req, res) => {
   try {
@@ -94,10 +108,10 @@ router.get(`/`, async (req, res) => {
 });
 
 router.get(`/login`, (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect(`/`);
-    return;
-  }
+  // if (req.session.logged_in) {
+  //    res.redirect(`/`);
+  //    return;
+  //}
   res.render(`login`);
 });
 

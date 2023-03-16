@@ -1,6 +1,12 @@
+const nodemailer = require('nodemailer');
 const router = require('express').Router();
 const Reservation = require('../../models/reservation');
 const reservation = new Reservation();
+ 
+
+
+
+
 
 
 // GET all reservatins
@@ -15,17 +21,37 @@ router.get('/reservation', async (req, res) => {
   });
 
 
-
 // POST a new reservation
 router.post('/reservation', async (req, res) => {
-    try {
-      const newReservation = await Reservation.create(req.body);
-      res.status(201).json(newReservation);
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
+  try {
+    const { customerId, carId, pickupDate, returnDate, email } = req.body;
+
+    if (!email) {
+      res.status(400).json({ message: 'Customer email is required' });
+      return;
     }
-  });
+
+    const newReservation = await Reservation.create({
+      customerId,
+      carId,
+      pickup: pickupDate,
+      return: returnDate,
+    });
+
+    // Send confirmation email
+    const messageId = await newReservation.sendConfirmationEmail(email); // Pass the email from the request body
+
+    // Return reservation ID and email message ID in response
+    res.status(200).json({ reservationId: newReservation.reservationId, messageId });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+
+
   
   // PUT update an existing reservation
   router.put('/reservation/:id', async (req, res) => {
@@ -44,22 +70,23 @@ router.post('/reservation', async (req, res) => {
     }
   });
   
-  // DELETE an existing reservation
-  router.delete('/reservation/:id', async (req, res) => {
-    try {
-      const deletedReservation = await Reservation.destroy({
-        where: { id: req.params.id }
-      });
-      if (!deletedReservation) {
-        res.status(404).json({ message: 'Reservation not found' });
-      } else {
-        res.status(200).json({ message: 'Reservation deleted successfully' });
-      }
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
+  // DELETE an existing reservation by reservation_id
+router.delete('/reservation/:id', async (req, res) => {
+  try {
+    const deletedReservation = await Reservation.destroy({
+      where: { reservationId: req.params.id }, // Update the field name here
+    });
+    if (!deletedReservation) {
+      res.status(404).json({ message: 'Reservation not found' });
+    } else {
+      res.status(200).json({ message: 'Reservation deleted successfully' });
     }
-  });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
   
   module.exports = router;
   

@@ -10,9 +10,13 @@
 <body>
     <div id="carousel-wrapper">
         <div class="carousel">
-            {{#each cars}}
-            <div class="carousel-slide"><img src="/images/{{image}}.jpg"></div>
-            {{/each}}
+
+            <div class="carousel-slide">
+                {{#each cars}}
+                <img src="/images/{{image}}.jpg">
+                {{/each}}
+            </div>
+
 
         </div>
         <button id="prevBtn">&#8249;</button>
