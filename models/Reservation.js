@@ -59,7 +59,7 @@ Reservation.init(
       type: DataTypes.INTEGER,
       references: {
         model: 'customers',
-        key: 'customer_Id',
+        key: 'customer_id',
       },
     },
     pickup: {

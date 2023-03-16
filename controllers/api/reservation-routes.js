@@ -9,7 +9,7 @@ const reservation = new Reservation();
 
 
 
-// GET all reservatins
+// GET all reservations
 router.get('/reservation', async (req, res) => {
     try {
       const reservation = await Reservation.findAll();
