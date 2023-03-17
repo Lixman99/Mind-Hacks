@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const  User  = require('./index');
 
-// CREATE new user
+// Signup
 router.post('/', async (req, res) => {
   try {
     const dbUserData = await User.create({
@@ -37,6 +37,8 @@ router.post('/login', async (req, res) => {
       return;
     }
 
+    // Verify the password in the db
+
     const validPassword = await dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
@@ -45,6 +47,8 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
+    
+    // Create session 
 
     req.session.save(() => {
       req.session.loggedIn = true;

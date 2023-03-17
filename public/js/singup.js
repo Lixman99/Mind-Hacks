@@ -7,7 +7,7 @@ const signupFormHandler = async (event) => {
     const phone = document.querySelector(`#phone-signup`).value.trim();
 
     if (email && password) {
-        const response = await fetch(`/api/customer/login`, {
+        const response = await fetch(`/api/customer`, {
             method: `POST`,
             body: JSON.stringify({ email, password, phone, name }),
             headers: { "Content-Type": "application/json" }
@@ -16,7 +16,7 @@ const signupFormHandler = async (event) => {
         if (response.ok) {
             document.location.replace(`/`)
         } else {
-            alert(`Sign up failed, try agin`)
+            alert(`Sign up failed, try again`)
         }
     }
 };
@@ -28,4 +28,4 @@ const signupFormHandler = async (event) => {
 // }
 document
     .querySelector(`.signup-form`)
-    .addEventListener(`submit`, loginFormHandler);
+    .addEventListener(`submit`, signupFormHandler);

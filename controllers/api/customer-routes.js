@@ -38,8 +38,16 @@ router.get('/:id', async (req, res) => {
 // POST a new customers
 router.post('/customer', async (req, res) => {
     try {
-      const newCustomer = await Customer.create(req.body);
-      res.status(201).json(newCustomer);
+      const newCustomer = await Customer.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+      });
+  
+      req.session.save(() => {
+        req.session.loggedIn = true;
+        res.status(200).json();
+      });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

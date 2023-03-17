@@ -1,4 +1,4 @@
-const User = require('./User');
+const User = require('./Admin');
 const Car = require('./Car');
 const Reservation = require('./Reservation');
 const Customer = require("./Customer")
