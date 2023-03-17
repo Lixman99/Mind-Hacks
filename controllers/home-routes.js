@@ -1,33 +1,64 @@
 const router = require(`express`).Router();
-const  Customer  = require (`../models/Customer`);
-const Car = require ('../models/Car');
-const withAuth = require(`../utilis/auth`);
+const { Customer, Car } = require(`../models`);
 
+const withAuth = require(`../utilis/auth`);
+const exphbs = require("express-handlebars")
+//const hbs = exphbs.create()
+const express = require('express');
 
 // GET all cars
-router.get('/cars', async (req, res) => {
+// GET all cars data and render the home page
+router.get('/home', async (req, res) => {
   try {
-    const cars = await Car.findAll();
-    res.status(200).json(cars);
+    const carsData = await Car.findAll();
+    const cars = carsData.map((car) => car.get({ plain: true }));
+    console.log(cars[0].image)
+
+
+    res.render('home', {
+      cars,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+//get all cars data and render the gallery page
+router.get('/gallery', async (req, res) => {
+  try {
+    const carsData = await Car.findAll();
+    const cars = carsData.map((car) => car.get({ plain: true }));
+    console.log(cars)
+    res.render('gallery', {
+      cars,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
+
 // GET one car by id
-router.get('/cars/:id', async (req, res) => {
+router.get('/rent/:car_id', async (req, res) => {
   try {
-    const car = await Car.findByPk(req.params.id);
-    if (!car) {
+    const carsData = await Car.findByPk(req.params.car_id);
+    const cars = carsData.get({ plain: true });
+    console.log(cars);
+    if (!cars) {
       res.status(404).json({ message: 'Car not found' });
-    } else {
-      res.status(200).json(car);
     }
+    res.render('rent', {
+      cars,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.get("/signup", async (req, res) => {
+  res.render('signup')
 });
 
 // POST a new car
@@ -75,29 +106,33 @@ router.delete('/cars/:id', async (req, res) => {
   }
 });
 
-
-router.get(`/`, withAuth, async (req,res)=> {
+//This has no withAuth
+router.get(`/`, async (req, res) => {
   try {
-      const customerData = await Customer.findAll({
-          attributes: { exclude: [`passsword`] },
-      });
-      // serialzng data 
-      const customer = customerData.map((project) => project.get({plain: true}));
+    const customerData = await Customer.findAll({
+      attributes: { exclude: [`passsword`] },
+    });
+    // serialzng data 
+    const customer = customerData.map((project) => project.get({ plain: true }));
 
-res.render(`rent`, {
-  customer,
-  logged_in: req.session.logged_in
-});
-  }catch (err) {
-      res.status(404).json(err);
+    const carsData = await Car.findAll({});
+    const cars = carsData.map((car) => car.get({ plain: true }));
+
+    res.render(`home`, {
+      customer,
+      logged_in: req.session.logged_in,
+      cars
+    });
+  } catch (err) {
+    res.status(404).json(err);
   }
 });
 
-router.get(`/login` , (req, res) =>{
-  if (req.session.logged_in) {
-      res.redirect(`/`);
-      return;
-  }
+router.get(`/login`, (req, res) => {
+  // if (req.session.logged_in) {
+  //    res.redirect(`/`);
+  //    return;
+  //}
   res.render(`login`);
 });
 
