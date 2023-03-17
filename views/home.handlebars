@@ -1,17 +1,25 @@
 <div id="carouselExample" class="carousel slide w-100">
-    <div class="carousel-inner">
+
+    <div class="carousel-inner w-75">
         {{#each cars as | car index | }}
         <div class="carousel-item{{#unless index}} active {{/unless}}">
             <img src="/images/{{image}}.jpg" class="d-block w-100">
+            <div id="flex">
+                <h2>Select your classic vintage vehicle</h2>
+                <a id="a-tag" href="/rent/{{carId}}">Book Now</a>
+
+            </div>
         </div>
         {{/each}}
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span class="button-style carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden ">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+    <button class=" carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="button-style carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
 </div>
@@ -19,10 +27,10 @@
 
 <div class="welcome-message-wrapper">
     <div id="welcome-message">
-        <h2>Select your classic vintage vehicle</h2>
 
-        <button class="rent-button">Rent Now</button>
+
     </div>
 </div>
 </div>
+
 <script src="js/home.js"></script>
