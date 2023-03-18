@@ -3,6 +3,7 @@ const { Customer } = require(`../../models`);
 
 router.post("/signup", async (req, res) => {
   try {
+    console.log(req.body)
     const customer = await Customer.create(req.body);
 
     // if (customerData) {

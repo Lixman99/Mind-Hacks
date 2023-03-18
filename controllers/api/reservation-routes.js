@@ -2,6 +2,8 @@ const nodemailer = require('nodemailer');
 const router = require('express').Router();
 const Reservation = require('../../models/reservation');
 const reservation = new Reservation();
+const Customer = require('../../models/Customer')
+const Car = require('../../models/Car')
  
 
 
@@ -24,22 +26,31 @@ router.get('/reservation', async (req, res) => {
 // POST a new reservation
 router.post('/reservation', async (req, res) => {
   try {
-    const { customerId, carId, pickupDate, returnDate, email } = req.body;
-
-    if (!email) {
-      res.status(400).json({ message: 'Customer email is required' });
-      return;
-    }
+    const customerData = await Customer.findOne({
+      attributes: ['email'],
+      where: {
+        customer_id: req.body.customerId
+      }
+    })
+    const carData = await Car.findOne({
+      attributes: ['title'],
+      where: {
+        car_id: req.body.carId
+      }
+    })
+    console.log(carData.title);
 
     const newReservation = await Reservation.create({
-      customerId,
-      carId,
-      pickup: pickupDate,
-      return: returnDate,
+      customerId: req.body.customerId,
+      carId: req.body.carId,
+      pickup: req.body.pickup,
+      return: req.body.return,
+      price: req.body.price
     });
+    
 
     // Send confirmation email
-    const messageId = await newReservation.sendConfirmationEmail(email); // Pass the email from the request body
+    const messageId = await newReservation.sendConfirmationEmail(customerData.email, carData.title); // Pass the email from the customer request, pass the car name from the car request
 
     // Return reservation ID and email message ID in response
     res.status(200).json({ reservationId: newReservation.reservationId, messageId });

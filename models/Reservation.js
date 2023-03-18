@@ -3,8 +3,59 @@ const sequelize = require('../config/connection');
 const nodemailer = require("nodemailer");
 const { EMAIL, PASSWORD } = require('../env');
 
+const emailTemplate = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: auto;
+        background-color: #f5f5f5;
+        padding: 30px;
+      }
+      .header {
+        font-size: 24px;
+        color: #333;
+      }
+      .content {
+        font-size: 16px;
+        color: #333;
+      }
+      .list {
+        font-size: 14px;
+        list-style-type: none;
+      }
+      .list-item {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="header">Reservation Confirmation</h1>
+      <p class="content">
+        Thank you for reserving a car with us. Your reservation details are as
+        follows:
+      </p>
+      <ul class="list">
+        <li class="list-item">Car: ${this.carTitle}</li>
+        <li class="list-item">Pickup Date: ${this.pickup}</li>
+        <li class="list-item">Return Date: ${this.return}</li>
+        <li class="list-item">Price: ${this.price}</li>
+      </ul>
+      <p class = "content">Pickup time is 2PM and return time is 11AM</p>
+      <p class="content">
+        Thank you for choosing our car rental service!
+      </p>
+    </div>
+  </body>
+</html>
+`;
+
 class Reservation extends Model {
-  async sendConfirmationEmail(customerEmail) {
+  async sendConfirmationEmail(customerEmail, carTitle) {
     // Define email transport settings
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com", // SMTP server address (usually mail.your-domain.com)
@@ -23,16 +74,54 @@ class Reservation extends Model {
       to: customerEmail, // replace with the customer's email address
       subject: "Reservation Confirmation",
       html: `
-        <h1>Reservation Confirmation</h1>
-        <p>Thank you for reserving a car with us. Your reservation details are as follows:</p>
-        <ul>
-          <li>Car ID: ${this.carId}</li>
-          <li>Pickup Date: ${this.pickup}</li>
-          <li>Return Date: ${this.return}</li>
-          <li>Price: ${this.price}</li>
-        </ul>
-        <p>Thank you for choosing our car rental service!</p>
-      `,
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>
+            .container {
+              font-family: Arial, sans-serif;
+              max-width: 600px;
+              margin: auto;
+              background-color: #f5f5f5;
+              padding: 30px;
+            }
+            .header {
+              font-size: 24px;
+              color: #333;
+            }
+            .content {
+              font-size: 16px;
+              color: #333;
+            }
+            .list {
+              font-size: 14px;
+              list-style-type: none;
+            }
+            .list-item {
+              margin-bottom: 8px;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <h1 class="header">Reservation Confirmation</h1>
+            <p class="content">
+              Thank you for reserving a car with us. Your reservation details are as
+              follows:
+            </p>
+            <ul class="list">
+              <li class="list-item">Car: ${carTitle}</li>
+              <li class="list-item">Pickup Date: ${this.pickup}</li>
+              <li class="list-item">Return Date: ${this.return}</li>
+              <li class="list-item">Price: $${this.price}</li>
+            </ul>
+            <p class="content">
+              Thank you for choosing our car rental service!
+            </p>
+          </div>
+        </body>
+      </html>
+      `
     };
 
     // Send the email and return the message ID
@@ -63,10 +152,10 @@ Reservation.init(
       },
     },
     pickup: {
-      type: DataTypes.DATE
+      type: DataTypes.DATEONLY
     },
     return: {
-      type: DataTypes.DATE
+      type: DataTypes.DATEONLY
     },
     price: {
       type: DataTypes.DECIMAL
