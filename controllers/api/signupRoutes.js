@@ -12,9 +12,9 @@ router.post("/signup", async (req, res) => {
     // }
 
     req.session.save(() => {
-      req.session.user_id = customer.id;
+      //req.session.user_id = customer.id;
+      req.session.email = customer.email;
       req.session.logged_in = true;
-        // req.session.isAdmin = "someEmail@email.com"===customer.email
       res.json({ customer, message: "Account created" });
     });
   } catch (err) {

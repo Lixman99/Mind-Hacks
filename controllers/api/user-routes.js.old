@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Customer } = require('../../models');
-const  User  = require('./index');
+const User = require('./index');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -27,14 +27,8 @@ router.post('/logmein', async (req, res) => {
   try {
     const customerData = await Customer.findOne({ email: req.body.email });
     const customer = customerData.get({ plain: true });
-    console.log(customer);
-    const dbUserData = await Customer.findOne({
-      where: {
-        email: req.body.email,
-      },
-    });
-
-    if (!customerData) {
+    
+    if (!customer) {
       res
         .status(400)
         .json({ message: 'Incorrect email or password. Please try again!' });
@@ -42,40 +36,48 @@ router.post('/logmein', async (req, res) => {
     }
 
     const validPassword = await customerData.checkPassword(req.body.password);
-console.log(validPassword)
+    console.log(validPassword)
     if (!validPassword) {
       res
         .status(400)
         .json({ message: 'Incorrect email or password. Please try again!' });
-      return;
     }
+    else {
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      console.log(
-        '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
-        req.session.cookie
-      );
+      req.session.save(() => {
+        req.session.loggedIn = true;
+        req.session.customerEmail = req.body.email;
+        console.log(
+          '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
+          req.session.cookie
+        );
+        console.log(req.session);
+        res.render('home',  { 
+          logged_in: req.session.logged_in,
+          customer_email: req.session.customeremail
+        });
 
-      res
-        .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
-    });
-  } catch (err) {
+      });
+    }
+      //       res
+      //         .status(200)
+      //         .json({ user: customerData, message: 'You are now logged in!' });
+      //     });
+    } catch (err) {
     console.log(err);
     res.status(500).json(err);
-  }
-});
+    }
+  });
 
-// Logout
-router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
-});
+      // Logout
+      router.post('/logout', (req, res) => {
+        if (req.session.loggedIn) {
+          req.session.destroy(() => {
+            res.status(204).end();
+          });
+        } else {
+          res.status(404).end();
+        }
+      });
 
-module.exports = router;
+      module.exports = router;

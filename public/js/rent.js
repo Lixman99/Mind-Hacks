@@ -3,8 +3,31 @@ const inputField = document.querySelector('#demo-one-input');
 const priceField = document.querySelector('#price');
 const totalField = document.querySelector('#totalPrice');
 const bookBtn = document.querySelector('#book');
+const loggedCustomer = document.querySelector('#loggedCustomer')
 let reservationData;
+let email = loggedCustomer.innerHTML
+// if (email) {
+//     async function fetchData(email) {
+//         try {
+//             const response = await fetch('/api/customerbyemail', {
+//                 method: 'POST',
+//                 body: JSON.stringify({ "email": email }),
+//                 headers: { 'Content-Type': 'application/json' },
+//             });
+// console.log(response);
+//             if (response.ok) {
+//             } else {
+//                 alert('Error');
+//             }
+//         } catch (err) {
+//             console.error(err);
+//         }
+//     }
 
+
+//     // Call the async function to fetch the data
+//     fetchData(email);
+// }
 
 // Add an event listener for the focus event
 inputField.addEventListener('focus', function () {
@@ -25,12 +48,12 @@ inputField.addEventListener('focus', function () {
         const dayPrice = priceArray[1];
         const totalPrice = numberDays * dayPrice;
         reservationData = {
-                        "customerId": "1",
-                        "carId": carId,
-                        "pickup": pickupDate,
-                        "return": returnDate,
-                        "price": totalPrice
-                    }
+            "email": email,
+            "carId": carId,
+            "pickup": pickupDate,
+            "return": returnDate,
+            "price": totalPrice
+        }
 
         if (numberDays == 0) {
             const minDays = 1;
@@ -47,8 +70,8 @@ inputField.addEventListener('focus', function () {
 });
 // Add an event listener for the onclick event
 bookBtn.addEventListener('click', function () {
-    
-console.log(reservationData);
+
+    console.log(reservationData);
 
 
     fetch('http://localhost:3001/reservation', {
@@ -65,13 +88,13 @@ console.log(reservationData);
 function showModal() {
     // Get the modal element by ID
     const modal = document.getElementById('myModal');
-  
+
     // Create a Bootstrap modal instance from the modal element
     const modalInstance = new bootstrap.Modal(modal);
-  
+
     // Show the modal
     modalInstance.show();
-  }
+}
 
 
 /* {{!-- <div class="modal fade" id="staticBackdrop" {{!-- data-bs-backdrop="static" --}} data-bs-keyboard="false" tabindex="-1"

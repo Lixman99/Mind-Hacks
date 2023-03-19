@@ -1,16 +1,33 @@
-const logout = async () => {
-    const response = await fetch(`/api//logout`,{
-        method:`POST`,
-        headers: {  "Content-Type": "application/json"},
-    });
-
-    if (response.ok) {
-        document.location.replace(`/login`);
-    } else{
-        alert(`Try again `);
-
+const logoutHandler = async () => {
+    await fetch('/api/logmeout', {
+        method: 'POST',
+        credentials: 'same-origin' // include cookies in the request
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Logout successful!');
+          location.reload();
+        } else {
+          console.error('Logout failed:', response.statusText);
+        }
+      })
+      .catch(error => {
+        console.error('Logout failed:', error);
+      });
     }
-    
-};
 
-document.querySelector(`#logout`).addEventListener(`click`.logout);
+const loggedIn = document.querySelector('#login')
+if (!loggedIn) {
+    const logoutBtn = document.querySelector('#logout')
+    logoutBtn.addEventListener(`click`, logoutHandler);
+}
+
+
+
+  
+
+  
+  
+  
+  
+  
