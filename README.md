@@ -63,7 +63,7 @@ http://localhost:3001
   - nodemailer
 
 
-# Home page
+ ## Home page
 
 ![Alt text](images/screen1.png)
 ## Gallery
