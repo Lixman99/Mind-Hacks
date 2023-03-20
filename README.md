@@ -82,10 +82,10 @@ There are currently no tests for this application.
 
 ## Contact
 
-phillips.terianne@gmail.com
-sundinkarin83@gmail.com
-alexiafastproduction@gmail.com
-Svattt7@gmail.com
-lixman_d@outlook.com
+- phillips.terianne@gmail.com
+- sundinkarin83@gmail.com
+- alexiafastproduction@gmail.com
+- Svattt7@gmail.com
+- lixman_d@outlook.com
 
 
