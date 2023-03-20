@@ -63,12 +63,16 @@ http://localhost:3001
   - nodemailer
 
 
-## Screen shots
+## Home page
 
 ![Alt text](images/screen1.png)
+## Gallery
 ![Alt text](images/screen2.png)
+## Login
 ![Alt text](images/screen3.png)
+## Choose date from calendar
 ![Alt text](images/screen4.png)
+## Reservation Confirmation
 ![Alt text](images/screen5.png)
  
 ## License
