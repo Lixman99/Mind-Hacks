@@ -6,17 +6,17 @@ const exphbs = require("express-handlebars")
 //const hbs = exphbs.create()
 const express = require('express');
 
-// GET all cars
 // GET all cars data and render the home page
 router.get('/home', async (req, res) => {
   try {
     const carsData = await Car.findAll();
     const cars = carsData.map((car) => car.get({ plain: true }));
-    console.log(cars[0].image)
 
 
     res.render('home', {
       cars,
+      logged_in: req.session.logged_in,
+      customer_email: req.session.email
     });
   } catch (err) {
     console.log(err);
@@ -31,6 +31,8 @@ router.get('/gallery', async (req, res) => {
     console.log(cars)
     res.render('gallery', {
       cars,
+      logged_in: req.session.logged_in,
+      customer_email: req.session.email
     });
   } catch (err) {
     console.log(err);
@@ -40,7 +42,7 @@ router.get('/gallery', async (req, res) => {
 
 
 // GET one car by id
-router.get('/rent/:car_id', async (req, res) => {
+router.get('/rent/:car_id', withAuth, async (req, res) => {
   try {
     const carsData = await Car.findByPk(req.params.car_id);
     const cars = carsData.get({ plain: true });
@@ -48,8 +50,11 @@ router.get('/rent/:car_id', async (req, res) => {
     if (!cars) {
       res.status(404).json({ message: 'Car not found' });
     }
+    console.log(req.session.email);
     res.render('rent', {
       cars,
+      logged_in: req.session.logged_in,
+      customer_email: req.session.email
     });
   } catch (err) {
     console.log(err);
@@ -129,10 +134,10 @@ router.get(`/`, async (req, res) => {
 });
 
 router.get(`/login`, (req, res) => {
-  // if (req.session.logged_in) {
-  //    res.redirect(`/`);
-  //    return;
-  //}
+  if (req.session.logged_in) {
+     res.redirect(`/home`);
+     return;
+  }
   res.render(`login`);
 });
 

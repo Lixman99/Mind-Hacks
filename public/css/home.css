@@ -10,83 +10,58 @@
 html {
     font-family: 'Raleway', sans-serif;
     font-family: 'Ubuntu', sans-serif;
+
+
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 9%;
+    height: 10%;
+    top: 50%;
+    color: black;
+}
+
+#flex {
+    display: flex;
+    margin-top: 10px;
+    background-color: rgb(237, 232, 232);
+    border: 2px solid black;
+}
+
+.carousel-inner {
+    margin: auto;
 }
 
 
 
 /*carousel css*/
 
-#carousel-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.carousel {
-    position: relative;
+#carouselExample {
+    margin: 0 auto;
     margin-top: 100px;
-    width: 50%;
-    overflow: hidden;
+
 
 }
 
-.carousel-slide {
-    display: flex;
-    width: 300%;
-    transition: transform 0.4s ease-in-out;
 
-}
 
-.carousel-slide img {
-    width: 33.33%;
-}
-
-#prevBtn,
-#nextBtn {
-
-    width: 50px;
-    height: 50px;
-    border: none;
-    background: #fff;
-    cursor: pointer;
-    z-index: 2;
-}
-
-#prevBtn {
-    left: 0;
-}
-
-#nextBtn {
-    right: 0;
-}
 
 
 /*welcome message css*/
 
-body {
-    background-color: rgb(236, 235, 235);
-}
 
-#welcome-message {
-    background-color: rgb(41, 40, 40, .8);
+
+/*#welcome-message {
+    background-color: black;
     color: #fff;
     padding: 20px;
-    margin: 0px;
-    position: relative;
-    height: 50px;
+    margin-top: 75px;
+
     display: flex;
-}
-
-.welcome-message-wrapper {
-    z-index: 2;
-    position: absolute;
-    top: 74%;
-    width: 650px;
-    padding-left: 30px;
+}*/
 
 
-}
 
 h2 {
     margin-left: 55px;
@@ -96,16 +71,22 @@ h2 {
 
 }
 
-.rent-button {
-    margin-top: 7px;
-    padding: 5px 10px 5px 10px;
-    background-color: rgb(236, 235, 235);
-    font-size: 20px;
+
+
+#a-tag:hover {
+    cursor: pointer;
+    background-color: rgb(237, 232, 232);
+    color: black;
+    border: 2px solid black;
 }
 
-.rent-button:hover {
-    cursor: pointer;
-    background-color: rgb(41, 40, 40);
-    color: rgb(236, 235, 235);
-    border: 2px solid rgb(236, 235, 235);
+#a-tag {
+    text-decoration: none;
+    color: white;
+
+    padding: 5px 10px 5px 10px;
+    background-color: rgb(168, 168, 168);
+
+    font-size: 20px;
+
 }

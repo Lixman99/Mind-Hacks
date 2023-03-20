@@ -3,12 +3,15 @@
     <div class="float-container">
         {{#each cars}}
         <div class="fleet-container">
+
             <img src="/images/{{image}}.jpg">
-            <h2>{{title}}</h2>
+
+            <div id="h2">
+                <h2>{{title}}</h2>
+            </div>
             <h3>{{description}}</h3>
             <h3>{{price}}</h3>
-            <button>Book Now</button>
-            {{!-- <button><a href="/rent/{{carId}}">Book Now</a></button> --}}
+            <button><a href="/rent/{{carId}}">Book Now</a></button>
         </div>
         {{/each}}
 
