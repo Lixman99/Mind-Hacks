@@ -2,9 +2,9 @@
 
 E-commerce Vintage Cruisers is a website that offers vintage car rental services to customers who are looking to add a touch of style and elegance to their special events. Whether it's a wedding, prom night, or a photoshoot, Vintage Cruisers has a collection of classic cars that are sure to make any occasion unforgettable.
 
-  * [Installation](#install)
+  * [Installation](#Installion)
   * [Usage](#usage)
-  * Visit deployed Heroku app [here.](https:/herokuapp.com/)
+  
 
 
 
@@ -12,6 +12,9 @@ E-commerce Vintage Cruisers is a website that offers vintage car rental services
 
 Booking a vintage car on our platform is simple and straightforward. Just browse our selection of available cars, choose the model that suits your needs, and book it for your desired rental period. We offer flexible rental options, daily, and weekly rentals, so you can enjoy your vintage ride for as long as you need.
 
+## Usage
+
+* Visit deployed Heroku app [here.](https:/herokuapp.com/)
 
 
 ## Installion
@@ -21,20 +24,24 @@ Run the following line of code in your terminal to install all the needed packag
 ```
 npm i
 ```
-
-
-## Usage
-
 Once all the packages have been installed build your DataBase. You can use Mysql workbench to create your DB or run command line:
 ```
 mysql -u root -p
 ```
-and create your DB there. Once DB has been created run in your terminal:
+source db/schema.sql
 ```
+and create your DB there. Once DB has been created run in your terminal:
+
 npm run seed
 ```
-to seed your DB. Once your DB is completed go to url:
+to seed your DB.
+
+Once your DB is completed
+
+run npm dev 
 ```
+go to url:
+
 http://localhost:3001
 ```
 
