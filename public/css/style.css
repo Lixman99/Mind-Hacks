@@ -44,20 +44,20 @@ header {
     align-items: center;
     gap: 5px;
 }
-
-
-a {
+a, button {
+    font-size: 20px;
     padding: 5px 10px;
-    margin: 5px;
-    text-decoration: none;
-    color: black;
+    border-radius: 10px;
+    border: 1px solid grey;
     background-color: rgb(227, 224, 224);
+    margin:5px;
+    text-decoration: none;
 }
 
-a:hover {
+a:hover, button:hover {
     color: rgb(227, 224, 224);
     background-color: black;
-    border: 1px solid white;
+    border: 2px solid white;
 }
 
 h3 {

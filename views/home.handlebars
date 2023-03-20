@@ -1,14 +1,14 @@
-<div id="carouselExample" class="carousel slide w-100">
+<div id="carouselExample" class="carousel slide w-75">
 
     <div class="carousel-inner w-75">
         {{#each cars as | car index | }}
         <div class="carousel-item{{#unless index}} active {{/unless}}">
-            <img src="/images/{{image}}.jpg" class="d-block w-100">
-            <div id="flex">
-                <h2>Select your classic vintage vehicle</h2>
+                    <div id="flex">
+                <H2 id = "title">Select your classic vintage vehicle</h2>
                 <a id="a-tag" href="/rent/{{carId}}">Book Now</a>
-
             </div>
+            <img src="/images/{{image}}.jpg" class="d-block w-100">
+
         </div>
         {{/each}}
     </div>
