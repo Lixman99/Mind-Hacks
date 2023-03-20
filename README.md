@@ -31,17 +31,17 @@ mysql -u root -p
 source db/schema.sql
 ```
 and create your DB there. Once DB has been created run in your terminal:
-```
+
 npm run seed
 ```
 to seed your DB.
-```
+
 Once your DB is completed
-```
+
 run npm dev 
 ```
 go to url:
-```
+
 http://localhost:3001
 ```
 
