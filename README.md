@@ -57,7 +57,7 @@ http://localhost:3001
 
 ## Screen shots
 
-![Shot-1](![Alt text](images/screen1.png))
+![Alt text](images/screen1.png)
 ![Shot-1](![Alt text](images/screen2.png))
 ![Shot-1](![Alt text](images/screen3.png))
 ![Shot-1](![Alt text](images/screen4.png))
