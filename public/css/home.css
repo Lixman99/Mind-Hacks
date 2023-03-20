@@ -19,7 +19,7 @@ html {
     width: 9%;
     height: 10%;
     top: 50%;
-    color: black;
+
 }
 
 #flex {
@@ -45,30 +45,24 @@ html {
 }
 
 
-
-
-
-/*welcome message css*/
-
-
-
-/*#welcome-message {
-    background-color: black;
-    color: #fff;
-    padding: 20px;
-    margin-top: 75px;
-
-    display: flex;
-}*/
-
-
-
 h2 {
     margin-left: 55px;
     margin-right: 20px;
     font-size: 20px;
     margin-top: 15px;
 
+}
+
+@media only screen and (max-width: 800px) {
+    h2 {
+        display: none;
+
+    }
+
+    #flex {
+        border: none;
+        background-color: rgb(227, 224, 224);
+    }
 }
 
 

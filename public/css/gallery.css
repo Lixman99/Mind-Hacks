@@ -23,7 +23,7 @@ img {
 
 }
 
-button {
+a {
     font-size: 20px;
     padding: 5px 10px;
     border-radius: 10px;
@@ -32,7 +32,7 @@ button {
     margin: 20px;
 }
 
-button:hover {
+a:hover {
     cursor: pointer;
     background-color: rgb(45, 45, 41);
     color: white;
@@ -44,12 +44,16 @@ button:hover {
     border: 1px solid grey;
     width: 100%;
 }
+
 a {
     padding: 5px 10px;
     margin: 5px;
     text-decoration: none;
     color: black;
     background-color: rgb(227, 224, 224);
+    border: 2px solid black;
+    border-radius: 5px;
+    ;
 }
 
 #a-tag {
