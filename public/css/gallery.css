@@ -14,7 +14,6 @@ h1 {
     color: white;
     padding: 20px;
 
-
 }
 
 img {
@@ -75,5 +74,9 @@ a {
         width: 40%;
         margin: 20px;
     }
-
+}
+#words {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
 }
