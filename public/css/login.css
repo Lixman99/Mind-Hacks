@@ -1,13 +1,12 @@
 html {
   font-family: 'Raleway', sans-serif;
   font-family: 'Ubuntu', sans-serif;
-
 }
 
 
 body {
   z-index: 2;
-  background-color: rgba(223, 221, 221, 0.8) !important;
+  background-color: rgb(227, 224, 224);
 }
 
 form {

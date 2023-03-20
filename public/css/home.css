@@ -14,6 +14,10 @@ html {
 
 }
 
+img {
+    width: 50%;
+}
+
 .carousel-control-prev,
 .carousel-control-next {
     width: 9%;
@@ -25,8 +29,8 @@ html {
 #flex {
     display: flex;
     margin-top: 10px;
-    background-color: rgb(237, 232, 232);
-    border: 2px solid black;
+    background-color: black;
+    border: 2px solid white;
 }
 
 .carousel-inner {
@@ -69,9 +73,9 @@ h2 {
 
 #a-tag:hover {
     cursor: pointer;
-    background-color: rgb(237, 232, 232);
-    color: black;
-    border: 2px solid black;
+    background-color: black;
+    color: rgb(227, 224, 224);
+    border: 2px solid white;
 }
 
 #a-tag {
@@ -79,8 +83,12 @@ h2 {
     color: white;
 
     padding: 5px 10px 5px 10px;
-    background-color: rgb(168, 168, 168);
+    background-color: rgb(227, 224, 224);
 
     font-size: 20px;
 
+}
+
+#title {
+    color: white;
 }
