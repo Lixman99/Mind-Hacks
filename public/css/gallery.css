@@ -43,6 +43,7 @@ a:hover {
     margin-bottom: 50px;
     border: 1px solid grey;
     width: 100%;
+    display: block;
 }
 
 a {
@@ -62,7 +63,7 @@ a {
     border: 2px solid black;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px)  {
 
     .float-container {
         display: flex;
