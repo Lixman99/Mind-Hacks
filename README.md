@@ -28,10 +28,11 @@ Once all the packages have been installed build your DataBase. You can use Mysql
 ```
 mysql -u root -p
 ```
+```
 source db/schema.sql
 ```
 and create your DB there. Once DB has been created run in your terminal:
-
+```
 npm run seed
 ```
 to seed your DB.
