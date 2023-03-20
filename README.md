@@ -70,11 +70,11 @@ http://localhost:3001
 Source link for [MIT](https://opensource.org/licenses/MIT)
 
 ## Contributors
-Terianne Phillips
-Karin Sundin
-Alexia Fast
-Sviatoslav Zakharuk
-Felix Mandungu
+- Terianne Phillips
+- Karin Sundin
+- Alexia Fast
+- Sviatoslav Zakharuk
+- Felix Mandungu
 
 ## Tests
 
