@@ -37,7 +37,7 @@ npm run seed
 to seed your DB.
 
 Once your DB is completed
-
+```
 run npm dev 
 ```
 go to url:
