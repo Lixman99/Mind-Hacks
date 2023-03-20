@@ -39,7 +39,7 @@ to seed your DB.
 
 Once your DB is completed
 ```
-run npm dev 
+npm start 
 ```
 go to url:
 
