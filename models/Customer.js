@@ -2,13 +2,12 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
-// Create a new Sequelize model for customers
-class Customer extends Model{
+// Create a new Sequelize model for customers, uses bcrypt for secure password storage
+class Customer extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
-
 Customer.init(
   {
     customerId: {
@@ -37,17 +36,17 @@ Customer.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8,16]
-    }
-  },
-},
-{
-  hooks: {
-    async beforeCreate(newUserData) {
-      newUserData.password = await bcrypt.hash(newUserData.password, 10);
-      return newUserData;
+        len: [8, 16]
+      }
     },
   },
+  {
+    hooks: {
+      async beforeCreate(newUserData) {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+    },
     // Link to database connection
     sequelize,
     timestamps: false,

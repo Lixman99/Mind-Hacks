@@ -1,47 +1,27 @@
-//const nodemailer = require('nodemailer');
 const router = require('express').Router();
 const Reservation = require('../../models/reservation');
 const Customer = require('../../models/Customer')
 const Car = require('../../models/Car')
- 
-
-// GET all reservations
-router.get('/reservation', async (req, res) => {
-    try {
-      const reservation = await Reservation.findAll();
-      res.status(200).json(reservation);
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  });
-
 
 // POST a new reservation
 router.post('/reservation', async (req, res) => {
   try {
+    //gets the customer id using the email address
     const customerData = await Customer.findOne({
       attributes: ['customer_id'],
       where: {
         email: req.body.email
       }
-      
     })
     const customer = customerData.get({ plain: true });
-    // const customerData = await Customer.findOne({
-    //   attributes: ['email'],
-    //   where: {
-    //     customer_id: req.body.customerId
-    //   }
-    // })
+    //gets the car title by the carId
     const carData = await Car.findOne({
       attributes: ['title'],
       where: {
         car_id: req.body.carId
       }
     })
-    
-    console.log(customer);
+  //creates the reservation in the database
     const newReservation = await Reservation.create({
       customerId: customer.customer_id,
       carId: req.body.carId,
@@ -60,6 +40,18 @@ router.post('/reservation', async (req, res) => {
     res.status(500).json(err);
   }
 });
+/* //***FUTURE FEATURE DEVELOPMENT ****
+// GET all reservations
+router.get('/reservation', async (req, res) => {
+  try {
+    const reservation = await Reservation.findAll();
+    res.status(200).json(reservation);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
   // PUT update an existing reservation
   router.put('/reservation/:id', async (req, res) => {
@@ -77,7 +69,7 @@ router.post('/reservation', async (req, res) => {
       res.status(500).json(err);
     }
   });
-  /* //***FUTURE FEATURES ****
+  
 
   // DELETE an existing reservation by reservation_id
 router.delete('/reservation/:id', async (req, res) => {

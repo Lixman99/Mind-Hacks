@@ -44,17 +44,20 @@ header {
     align-items: center;
     gap: 5px;
 }
-a, button {
+
+a,
+button {
     font-size: 20px;
     padding: 5px 10px;
     border-radius: 10px;
     border: 1px solid grey;
     background-color: rgb(227, 224, 224);
-    margin:5px;
+    margin: 5px;
     text-decoration: none;
 }
 
-a:hover, button:hover {
+a:hover,
+button:hover {
     color: rgb(227, 224, 224);
     background-color: black;
     border: 2px solid white;
@@ -90,26 +93,30 @@ h3 {
     float: left;
     width: 35%;
     padding: 10px;
-    margin:2%;
+    margin: 2%;
     box-sizing: border-box;
 }
+
 .column-two {
     float: left;
     width: 57%;
     padding: 10px;
-    margin:2%;
+    margin: 2%;
     box-sizing: border-box;
     align-content: center;
 }
+
 .row::after {
     content: "";
     clear: both;
     display: table;
 }
-.mbsc-ios.mbsc-page {
-    background: rgb(227, 224, 224) }
 
-    #note {
-        color:blue;
-        padding: 10px;
-    }
+.mbsc-ios.mbsc-page {
+    background: rgb(227, 224, 224)
+}
+
+#note {
+    color: blue;
+    padding: 10px;
+}

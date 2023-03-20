@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="../css/style.css">
 <script src="../js/mobiscroll.javascript.min.js"></script>
 
-
 <style type="text/css">
     body {
         margin: 0;
@@ -42,8 +41,6 @@
     }
 </style>
 
-</head>
-
 <body>
     <div class="row">
         <div class="column-one">
@@ -51,11 +48,8 @@
             <div mbsc-page class="demo-date-range">
                 <div style="height:100%">
                     <div id="demo-calendar"></div>
-
                     <div id="demo-date"></div>
-
                     <div id="demo-range-presets"></div>
-
                     <label>
                         Pick your dates!
                         <input id="demo-one-input" mbsc-input data-input-style="outline" data-label-style="stacked"
@@ -65,47 +59,39 @@
             </div>
         </div>
 
-                <div class="column-two">
-                    <h3>{{cars.title}}</h3>
-                    <h4>{{cars.description}}</h4>
-                    <h4 id = "note">Please Note: Check out time is 2PM, Check in time is 11AM</h4>
-                    <h3 id="price">Price per Day ${{cars.price}}</h3>
-                    
-                    <h4 id="totalPrice"><br></h4>
-                    <button id="book"> Reserve Now!</button>
-                </div>
+        <div class="column-two">
+            <h3>{{cars.title}}</h3>
+            <h4>{{cars.description}}</h4>
+            <h4 id="note">Please Note: Check out time is 2PM, Check in time is 11AM</h4>
+            <h3 id="price">Price per Day ${{cars.price}}</h3>
+            <h4 id="totalPrice"><br></h4>
+            <button id="book"> Reserve Now!</button>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h2>Reservation Confirmation</h2>
+                <p>Details of your reservation have been sent, thank you for choosing our car rental service!
+                </p>
             </div>
+        </div>
+    </div>
+    <script>
+        mobiscroll.setOptions({
+            locale: mobiscroll.localeEn,  // Specify language like: locale: mobiscroll.localePl or omit setting to use default
+            theme: 'ios',                 // Specify theme like: theme: 'ios' or omit setting to use default
+            themeVariant: 'light'         // More info about themeVariant: https://docs.mobiscroll.com/5-22-2/javascript/range#opt-themeVariant
+        });
 
 
-            
-            
+        mobiscroll.datepicker('#demo-one-input', {
+            controls: ['calendar'],       // More info about controls: https://docs.mobiscroll.com/5-22-2/javascript/range#opt-controls
+            select: 'range',               // More info about select: https://docs.mobiscroll.com/5-22-2/javascript/range#methods-select
+            autocorrect: 'false',
+            min: new Date(2023, 2, 21),
+        });
 
-            <!-- Modal -->
-            <div class="modal fade" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <h2>Reservation Confirmation</h2>
-                        <p>Details of your reservation have been sent, thank you for choosing our car rental service!
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-            <script>
-
-                mobiscroll.setOptions({
-                    locale: mobiscroll.localeEn,  // Specify language like: locale: mobiscroll.localePl or omit setting to use default
-                    theme: 'ios',                 // Specify theme like: theme: 'ios' or omit setting to use default
-                    themeVariant: 'light'         // More info about themeVariant: https://docs.mobiscroll.com/5-22-2/javascript/range#opt-themeVariant
-                });
-
-
-                mobiscroll.datepicker('#demo-one-input', {
-                    controls: ['calendar'],       // More info about controls: https://docs.mobiscroll.com/5-22-2/javascript/range#opt-controls
-                    select: 'range',               // More info about select: https://docs.mobiscroll.com/5-22-2/javascript/range#methods-select
-                    autocorrect: 'false',
-                    min: new Date(2023, 2, 21),
-                });
-
-            </script>
-            <script src="../js/rent.js"></script>
+    </script>
+    <script src="../js/rent.js"></script>

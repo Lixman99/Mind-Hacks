@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // Create a new Sequelize model for cars
-class Car extends Model {}
+class Car extends Model { }
 
 Car.init(
   {

@@ -13,6 +13,7 @@ html {
 
 
 }
+
 img {
     width: 50%;
 }
@@ -76,7 +77,7 @@ h2 {
 
 
 
-#a-tag:hover{
+#a-tag:hover {
     cursor: pointer;
     background-color: black;
     color: rgb(227, 224, 224);
@@ -93,6 +94,7 @@ h2 {
     font-size: 20px;
 
 }
+
 #title {
     color: white;
 }
