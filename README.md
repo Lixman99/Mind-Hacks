@@ -19,7 +19,7 @@ Booking a vintage car on our platform is simple and straightforward. Just browse
 
 ## Usage
 
-* Visit deployed Heroku app [here.](https:/herokuapp.com/)
+* Visit deployed Heroku app [here.](https://vintagecruisers.herokuapp.com/)
 
 
 ## Contribution
