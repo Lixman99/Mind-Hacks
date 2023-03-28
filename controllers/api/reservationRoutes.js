@@ -40,18 +40,22 @@ router.post('/reservation', async (req, res) => {
     res.status(500).json(err);
   }
 });
-/* //***FUTURE FEATURE DEVELOPMENT ****
-// GET all reservations
-router.get('/reservation', async (req, res) => {
+
+// GET all reservations based on car id
+router.get('/reservation/:carId', async (req, res) => {
   try {
-    const reservation = await Reservation.findAll();
-    res.status(200).json(reservation);
+    const reservationData = await Reservation.findAll({
+      where: { car_id: req.params.carId }
+    });
+    const reservations = reservationData.map((reservation) => reservation.get({ plain: true }));
+    return res.json(reservations);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
+/* //***FUTURE FEATURE DEVELOPMENT ****
 
   // PUT update an existing reservation
   router.put('/reservation/:id', async (req, res) => {
