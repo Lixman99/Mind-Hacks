@@ -87,4 +87,4 @@ Source link for [MIT](https://opensource.org/licenses/MIT)
 - Karin Sundin - sundinkarin83@gmail.com
 - Alexia Fast - alexiafastproduction@gmail.com
 - Sviatoslav Zakharuk- Svattt7@gmail.com
-- Felix Mandungu- lixman_d@outlook.com
+- Felix M.- lixman_d@outlook.com
